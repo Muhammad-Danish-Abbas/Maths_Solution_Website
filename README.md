@@ -1,5 +1,6 @@
-# Maths_Solution_Website
- # Maths Solution Website
+# Maths Solution Website
+## Website Link
+Visit the live website: [Maths Solution Website](https://muhammad-danish-abbas.github.io/Maths_Solution_Website)
 
 ## Description
 Maths Solution Website offers a simple interface for solving math problems. It includes a calculator, graph plotter, and geometry tools. With a responsive design, dark/light mode, and fast performance, it helps students and professionals. Built using HTML, CSS, and JavaScript, it ensures easy and efficient calculations.
@@ -20,7 +21,7 @@ Maths Solution Website offers a simple interface for solving math problems. It i
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Muhammad-Danish-Abbas/maths-solution-website.git
+   git clone https://github.com/yourusername/maths-solution-website.git
    ```
 2. Open `index.html` in a browser.
 
@@ -28,6 +29,9 @@ Maths Solution Website offers a simple interface for solving math problems. It i
 - Enter numbers in the calculator for instant results.
 - Input equations to plot graphs.
 - Use geometry tools for shape calculations.
+
+## Website Link
+Visit the live website: [Maths Solution Website](https://muhammad-danish-abbas.github.io/Maths_Solution_Website)
 
 ## Contributing
 Feel free to contribute by submitting issues or pull requests.
