@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathPro - Advanced Calculations</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-square-root-alt"></i>
+                <span>MathPro</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#basic" class="active">Basic Math</a></li>
+                <li><a href="#scientific">Scientific</a></li>
+                <li><a href="#geometry">Geometry</a></li>
+                <li><a href="#graphs">Graphs</a></li>
+            </ul>
+            <div class="theme-toggle">
+                <i class="fas fa-sun"></i>
+                <label class="switch">
+                    <input type="checkbox" id="theme-switch">
+                    <span class="slider round"></span>
+                </label>
+                <i class="fas fa-moon"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="hero">
+            <h1>Advanced Mathematical Tools</h1>
+            <p>Your one-stop solution for all calculations</p>
+        </section>
+
+        <section id="basic" class="calculator-section">
+            <h2>Basic Mathematics</h2>
+            <div class="calculator-grid">
+                <div class="calc-card">
+                    <h3><i class="fas fa-calculator"></i> Standard Calculator</h3>
+                    <div class="calc-content">
+                        <!-- Standard Calculator Interface -->
+                        <div class="display">
+                            <input type="text" id="basic-calc" readonly>
+                </div>
+                        <div class="basic-buttons">
+                            <!-- Calculator buttons will be added via JavaScript -->
+                </div>
+                </div>
+                </div>
+
+                <div class="calc-card">
+                    <h3><i class="fas fa-percent"></i> Percentage Calculator</h3>
+                    <div class="calc-content">
+                        <div class="input-group">
+                            <input type="number" id="percent-value" placeholder="Value">
+                            <input type="number" id="percent-percent" placeholder="Percentage">
+                            <button onclick="calculatePercentage()">Calculate</button>
+                </div>
+                        <div id="percent-result" class="result"></div>
+            </div>
+                </div>
+                </div>
+        </section>
+
+        <section id="scientific" class="calculator-section">
+            <h2>Scientific Calculations</h2>
+            <div class="calculator-grid">
+                <div class="calc-card">
+                    <h3><i class="fas fa-superscript"></i> Scientific Calculator</h3>
+                    <div class="calc-content">
+                        <div class="display">
+                            <input type="text" id="scientific-calc" readonly>
+        </div>
+                        <div class="scientific-buttons">
+                            <!-- Scientific calculator buttons -->
+                </div>
+            </div>
+        </div>
+
+                <div class="calc-card">
+                    <h3><i class="fas fa-square-root-alt"></i> Equation Solver</h3>
+                    <div class="calc-content">
+                        <textarea id="equation-input" placeholder="Enter equation (e.g., 2x + 3 = 10)"></textarea>
+                        <button onclick="solveEquation()">Solve</button>
+                        <div id="equation-result" class="result"></div>
+                    </div>
+                    </div>
+                </div>
+        </section>
+
+        <section id="geometry" class="calculator-section">
+            <h2>Geometry Tools</h2>
+            <div class="calculator-grid">
+                <div class="calc-card">
+                    <h3><i class="fas fa-shapes"></i> Area Calculator</h3>
+                    <div class="calc-content">
+                        <select id="shape-select">
+                            <option value="circle">Circle</option>
+                            <option value="rectangle">Rectangle</option>
+                            <option value="triangle">Triangle</option>
+                        </select>
+                        <div id="shape-inputs">
+                            <!-- Inputs will be added dynamically -->
+                </div>
+                        <button onclick="calculateArea()">Calculate Area</button>
+                        <div id="area-result" class="result"></div>
+            </div>
+        </div>
+
+                <div class="calc-card">
+                    <h3><i class="fas fa-ruler-combined"></i> Unit Converter</h3>
+                    <div class="calc-content">
+                        <select id="unit-type">
+                            <option value="length">Length</option>
+                            <option value="weight">Weight</option>
+                            <option value="temperature">Temperature</option>
+                        </select>
+                        <div class="converter-inputs">
+                            <input type="number" id="convert-from" placeholder="Enter value">
+                            <select id="unit-from"></select>
+                            <span>to</span>
+                            <select id="unit-to"></select>
+                        </div>
+                        <button onclick="convert()">Convert</button>
+                        <div id="conversion-result" class="result"></div>
+                    </div>
+                    </div>
+                    </div>
+        </section>
+
+        <section id="graphs" class="calculator-section">
+            <h2>Graph Plotter</h2>
+            <div class="calculator-grid">
+                <div class="calc-card">
+                    <h3><i class="fas fa-chart-line"></i> Graph Visualization</h3>
+                    <div class="calc-content">
+                        <div class="graph-controls">
+                            <select id="graph-type">
+                                <option value="line">Line Graph</option>
+                            <option value="bar">Bar Chart</option>
+                            <option value="scatter">Scatter Plot</option>
+                            <option value="pie">Pie Chart</option>
+                        </select>
+                            <div class="input-group">
+                                <input type="text" id="graph-values" 
+                                       placeholder="Enter values (e.g., 10,20,30,40,50)">
+                                <div class="color-picker">
+                                    <label>Graph Color:</label>
+                                    <input type="color" id="graph-color" value="#4a90e2">
+                    </div>
+                                <button onclick="plotGraph()">Plot Graph</button>
+                        </div>
+                            </div>
+                        <div id="graph-container"></div>
+                            </div>
+                        </div>
+                    </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About MathPro</h3>
+                <p>Advanced mathematical tools for students, professionals, and everyone in between.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#basic">Basic Calculators</a></li>
+                    <li><a href="#scientific">Scientific Tools</a></li>
+                    <li><a href="#geometry">Geometry</a></li>
+                    <li><a href="#graphs">Graphs</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://github.com/Muhammad-Danish-Abbas"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 MathPro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeSwitch = document.getElementById('theme-switch');
+            
+            // Function to toggle theme
+            function toggleTheme(isDark) {
+                document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            }
+
+            // Set initial theme
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            themeSwitch.checked = savedTheme === 'dark';
+
+            // Add event listener for theme toggle
+            themeSwitch.addEventListener('change', (e) => {
+                toggleTheme(e.target.checked);
+            });
+
+            // Initialize all calculators
+            initializeBasicCalculator();
+            initializeScientificCalculator();
+            initializeGeometryTools();
+            initializeUnitConverter();
+        });
+
+        // Basic Calculator Functions
+        function initializeBasicCalculator() {
+            const buttonContainer = document.querySelector('.basic-buttons');
+            if (!buttonContainer) return;
+
+            const buttons = [
+                '7', '8', '9', '/',
+                '4', '5', '6', '*',
+                '1', '2', '3', '-',
+                '0', '.', '=', '+',
+                'C', 'DEL'
+            ];
+
+            buttonContainer.innerHTML = buttons.map(btn => `
+                <button onclick="handleBasicCalculator('${btn}')">${btn}</button>
+            `).join('');
+        }
+
+        function handleBasicCalculator(value) {
+            const display = document.getElementById('basic-calc');
+            if (!display) return;
+
+            switch(value) {
+                case 'C':
+                    display.value = '';
+                        break;
+                case 'DEL':
+                    display.value = display.value.slice(0, -1);
+                        break;
+                case '=':
+                    try {
+                        display.value = eval(display.value);
+                    } catch {
+                        display.value = 'Error';
+                    }
+                        break;
+                default:
+                    display.value += value;
+            }
+        }
+
+        // Percentage Calculator
+        function calculatePercentage() {
+            const value = parseFloat(document.getElementById('percent-value').value);
+            const percentage = parseFloat(document.getElementById('percent-percent').value);
+            const result = document.getElementById('percent-result');
+
+            if (isNaN(value) || isNaN(percentage)) {
+                result.textContent = 'Please enter valid numbers';
+                return;
+            }
+
+            const percentageValue = (value * percentage) / 100;
+            result.textContent = `${percentage}% of ${value} = ${percentageValue.toFixed(2)}`;
+        }
+
+        // Geometry Tools Functions
+        function initializeGeometryTools() {
+            const shapeSelect = document.getElementById('shape-select');
+            const shapeInputs = document.getElementById('shape-inputs');
+            
+            if (shapeSelect) {
+                updateShapeInputs(shapeSelect.value);
+                shapeSelect.addEventListener('change', function() {
+                    updateShapeInputs(this.value);
+                });
+            }
+        }
+
+        function updateShapeInputs(shape) {
+            const shapeInputs = document.getElementById('shape-inputs');
+            
+            switch(shape) {
+                case 'circle':
+                    shapeInputs.innerHTML = `
+                        <div class="input-group">
+                            <input type="number" id="radius" placeholder="Enter radius" step="0.01" min="0">
+                        </div>
+                    `;
+                        break;
+                case 'rectangle':
+                    shapeInputs.innerHTML = `
+                        <div class="input-group">
+                            <input type="number" id="width" placeholder="Enter width" step="0.01" min="0">
+                            <input type="number" id="height" placeholder="Enter height" step="0.01" min="0">
+                        </div>
+                    `;
+                        break;
+                case 'triangle':
+                    shapeInputs.innerHTML = `
+                        <div class="input-group">
+                            <input type="number" id="base" placeholder="Enter base" step="0.01" min="0">
+                            <input type="number" id="height" placeholder="Enter height" step="0.01" min="0">
+                        </div>
+                    `;
+                        break;
+            }
+        }
+
+        function calculateArea() {
+            const shape = document.getElementById('shape-select').value;
+            const result = document.getElementById('area-result');
+
+            try {
+                let area;
+                switch(shape) {
+                    case 'circle':
+                        const radius = parseFloat(document.getElementById('radius').value);
+                        if (isNaN(radius) || radius <= 0) {
+                            throw new Error('Please enter a valid radius');
+                        }
+                        area = Math.PI * radius * radius;
+                        break;
+                    
+                    case 'rectangle':
+                        const width = parseFloat(document.getElementById('width').value);
+                        const height = parseFloat(document.getElementById('height').value);
+                        if (isNaN(width) || isNaN(height) || width <= 0 || height <= 0) {
+                            throw new Error('Please enter valid dimensions');
+                        }
+                        area = width * height;
+                        break;
+                    
+                    case 'triangle':
+                        const base = parseFloat(document.getElementById('base').value);
+                        const triangleHeight = parseFloat(document.getElementById('height').value);
+                        if (isNaN(base) || isNaN(triangleHeight) || base <= 0 || triangleHeight <= 0) {
+                            throw new Error('Please enter valid dimensions');
+                        }
+                        area = (base * triangleHeight) / 2;
+                        break;
+                }
+                
+                result.textContent = `Area: ${area.toFixed(2)} square units`;
+                result.style.color = 'var(--text-color)';
+            } catch (error) {
+                result.textContent = error.message;
+                result.style.color = 'var(--accent-color)';
+            }
+        }
+
+        // Graph Plotter Functions
+        function plotGraph() {
+            const graphType = document.getElementById('graph-type').value;
+            const graphColor = document.getElementById('graph-color').value;
+            const graphValues = document.getElementById('graph-values').value;
+            const graphContainer = document.getElementById('graph-container');
+
+            if (!graphValues) {
+                alert('Please enter values');
+                return;
+            }
+
+            try {
+                const values = graphValues.split(',').map(v => parseFloat(v.trim()));
+                
+                if (values.some(isNaN)) {
+                    alert('Please enter valid numbers separated by commas');
+                    return;
+                }
+
+                const labels = Array.from({length: values.length}, (_, i) => `Point ${i + 1}`);
+
+                let trace = {};
+
+            switch(graphType) {
+                    case 'line':
+                        trace = {
+                            x: labels,
+                            y: values,
+                            type: 'scatter',
+                            mode: 'lines+markers',
+                            line: { color: graphColor, width: 3 },
+                            marker: { color: graphColor, size: 8 }
+                    };
+                    break;
+
+                case 'bar':
+                        trace = {
+                            x: labels,
+                            y: values,
+                            type: 'bar',
+                            marker: { color: graphColor }
+                    };
+                    break;
+
+                    case 'scatter':
+                        trace = {
+                            x: labels,
+                            y: values,
+                            type: 'scatter',
+                            mode: 'markers',
+                            marker: { color: graphColor, size: 12 }
+                    };
+                    break;
+
+                case 'pie':
+                        trace = {
+                            values: values,
+                            labels: values.map((_, i) => `Slice ${i + 1}`),
+                            type: 'pie',
+                            marker: {
+                                colors: values.map((_, i) => {
+                                    // Generate different colors for each slice
+                                    const hue = (i * 360) / values.length;
+                                    return `hsl(${hue}, 70%, 50%)`;
+                                })
+                            },
+                            textinfo: 'label+percent',
+                            hoverinfo: 'label+value+percent',
+                            hole: 0.4  // Makes it a donut chart
+                    };
+                    break;
+                }
+
+                const layout = {
+                    title: {
+                        text: `${graphType.charAt(0).toUpperCase() + graphType.slice(1)} Graph`,
+                        font: { size: 24 }
+                    },
+                    paper_bgcolor: 'rgba(0,0,0,0)',
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    font: {
+                        color: getComputedStyle(document.documentElement)
+                            .getPropertyValue('--text-color')
+                    },
+                    margin: { l: 50, r: 50, b: 50, t: 50, pad: 4 },
+                    xaxis: graphType !== 'pie' ? {
+                        title: 'Points',
+                        gridcolor: '#888',
+                        zerolinecolor: '#888'
+                    } : undefined,
+                    yaxis: graphType !== 'pie' ? {
+                        title: 'Values',
+                        gridcolor: '#888',
+                        zerolinecolor: '#888'
+                    } : undefined,
+                    showlegend: graphType === 'pie'
+                };
+
+                const config = {
+                    responsive: true,
+                    displayModeBar: true,
+                    displaylogo: false
+                };
+
+                Plotly.newPlot(graphContainer, [trace], layout, config);
+
+            } catch (error) {
+                console.error('Graph plotting error:', error);
+                alert('Error plotting graph. Please check your input values.');
+            }
+        }
+
+        // Unit Converter Functions
+        function initializeUnitConverter() {
+            const unitType = document.getElementById('unit-type');
+            if (unitType) {
+                updateUnitOptions(unitType.value);
+                unitType.addEventListener('change', function() {
+                    updateUnitOptions(this.value);
+                    document.getElementById('convert-from').value = '';
+                    document.getElementById('conversion-result').textContent = '';
+                });
+            }
+        }
+
+        function updateUnitOptions(type) {
+            const fromSelect = document.getElementById('unit-from');
+            const toSelect = document.getElementById('unit-to');
+            
+            const options = {
+                'length': ['meters', 'kilometers', 'miles', 'feet', 'inches', 'centimeters'],
+                'weight': ['kilograms', 'grams', 'pounds', 'ounces'],
+                'temperature': ['Celsius', 'Fahrenheit', 'Kelvin']
+            };
+
+            const units = options[type] || [];
+            
+            // Clear and update options
+            fromSelect.innerHTML = '';
+            toSelect.innerHTML = '';
+            
+            units.forEach(unit => {
+                fromSelect.add(new Option(unit, unit));
+                toSelect.add(new Option(unit, unit));
+            });
+
+            // Set different default selections
+            if (units.length > 1) {
+                toSelect.selectedIndex = 1;
+            }
+        }
+
+        function convert() {
+            const type = document.getElementById('unit-type').value;
+            const fromValue = parseFloat(document.getElementById('convert-from').value);
+            const fromUnit = document.getElementById('unit-from').value;
+            const toUnit = document.getElementById('unit-to').value;
+            const result = document.getElementById('conversion-result');
+
+            if (isNaN(fromValue)) {
+                result.textContent = 'Please enter a valid number';
+                result.style.color = 'var(--accent-color)';
+                return;
+            }
+
+            try {
+                let converted;
+                switch(type) {
+                    case 'length':
+                        converted = convertLength(fromValue, fromUnit, toUnit);
+                        break;
+                    case 'weight':
+                        converted = convertWeight(fromValue, fromUnit, toUnit);
+                        break;
+                    case 'temperature':
+                        converted = convertTemperature(fromValue, fromUnit, toUnit);
+                        break;
+                    default:
+                        throw new Error('Invalid conversion type');
+                }
+
+                result.textContent = `${fromValue} ${fromUnit} = ${converted.toFixed(2)} ${toUnit}`;
+                result.style.color = 'var(--text-color)';
+            } catch (error) {
+                result.textContent = error.message;
+                result.style.color = 'var(--accent-color)';
+            }
+        }
+
+        function convertLength(value, from, to) {
+            const conversions = {
+                'meters': 1,
+                'kilometers': 1000,
+                'miles': 1609.34,
+                'feet': 0.3048,
+                'inches': 0.0254,
+                'centimeters': 0.01
+            };
+
+            if (!(from in conversions) || !(to in conversions)) {
+                throw new Error('Invalid length units');
+            }
+
+            // Convert to meters, then to target unit
+            const meters = value * conversions[from];
+            return meters / conversions[to];
+        }
+
+        function convertWeight(value, from, to) {
+            const conversions = {
+                'kilograms': 1000,
+                'grams': 1,
+                'pounds': 453.592,
+                'ounces': 28.3495
+            };
+
+            if (!(from in conversions) || !(to in conversions)) {
+                throw new Error('Invalid weight units');
+            }
+
+            // Convert to grams, then to target unit
+            const grams = value * conversions[from];
+            return grams / conversions[to];
+        }
+
+        function convertTemperature(value, from, to) {
+            let celsius;
+
+            // Convert to Celsius first
+            switch(from) {
+                case 'Celsius':
+                    celsius = value;
+                    break;
+                case 'Fahrenheit':
+                    celsius = (value - 32) * (5/9);
+                    break;
+                case 'Kelvin':
+                    celsius = value - 273.15;
+                    break;
+                default:
+                    throw new Error('Invalid temperature unit');
+            }
+
+            // Convert from Celsius to target unit
+            switch(to) {
+                case 'Celsius':
+                    return celsius;
+                case 'Fahrenheit':
+                    return (celsius * 9/5) + 32;
+                case 'Kelvin':
+                    return celsius + 273.15;
+                default:
+                    throw new Error('Invalid temperature unit');
+            }
+        }
+
+        // Add this Scientific Calculator initialization
+        function initializeScientificCalculator() {
+            const buttonContainer = document.querySelector('.scientific-buttons');
+            if (!buttonContainer) return;
+
+            const buttons = [
+                ['sin', 'cos', 'tan', '('],
+                ['√', '^2', 'log', ')'],
+                ['7', '8', '9', '/'],
+                ['4', '5', '6', '*'],
+                ['1', '2', '3', '-'],
+                ['0', '.', '=', '+'],
+                ['π', 'e', 'C', 'DEL']
+            ];
+
+            buttonContainer.innerHTML = buttons.map(row => `
+                <div class="button-row">
+                    ${row.map(btn => `
+                        <button onclick="handleScientificCalculator('${btn}')">${btn}</button>
+                    `).join('')}
+                </div>
+            `).join('');
+        }
+
+        function handleScientificCalculator(value) {
+            const display = document.getElementById('scientific-calc');
+            if (!display) return;
+
+            try {
+                switch(value) {
+                    case 'C':
+                        display.value = '';
+                        break;
+                    case 'DEL':
+                        display.value = display.value.slice(0, -1);
+                        break;
+                    case '=':
+                        let expression = display.value;
+                        // Replace mathematical expressions with JavaScript equivalents
+                        expression = expression
+                            .replace(/sin\(/g, 'Math.sin(')
+                            .replace(/cos\(/g, 'Math.cos(')
+                            .replace(/tan\(/g, 'Math.tan(')
+                            .replace(/log\(/g, 'Math.log10(')
+                            .replace(/√\(/g, 'Math.sqrt(')
+                            .replace(/π/g, 'Math.PI')
+                            .replace(/e/g, 'Math.E')
+                            .replace(/\^2/g, '**2');
+
+                        // Convert degrees to radians for trigonometric functions
+                        expression = expression.replace(
+                            /Math\.(sin|cos|tan)\((.*?)\)/g,
+                            (match, func, num) => `Math.${func}((${num}) * Math.PI / 180)`
+                        );
+
+                        display.value = eval(expression);
+                        break;
+                    case 'π':
+                        display.value += 'π';
+                        break;
+                    case 'e':
+                        display.value += 'e';
+                        break;
+                    case '^2':
+                        display.value += '^2';
+                        break;
+                    case '√':
+                    case 'sin':
+                    case 'cos':
+                    case 'tan':
+                    case 'log':
+                        display.value += `${value}(`;
+                        break;
+                    default:
+                        display.value += value;
+                }
+            } catch (error) {
+                display.value = 'Error';
+                console.error('Calculator Error:', error);
+            }
+        }
+
+        // Add this for Equation Solver
+        function solveEquation() {
+            const equation = document.getElementById('equation-input').value;
+            const result = document.getElementById('equation-result');
+
+            try {
+                // Remove spaces and convert to standard form
+                const cleanEquation = equation.replace(/\s+/g, '');
+                
+                // Check if it's a quadratic equation (ax² + bx + c = 0)
+                if (cleanEquation.includes('x²') || cleanEquation.includes('x^2')) {
+                    solveQuadratic(cleanEquation, result);
+                    return;
+                }
+
+                // Linear equation (ax + b = c)
+                const sides = cleanEquation.split('=');
+                if (sides.length !== 2) throw new Error('Invalid equation format');
+
+                // Move all terms to left side
+                let leftSide = sides[0];
+                let rightSide = sides[1];
+
+                // Solve for x
+                let x = (parseFloat(rightSide) - parseFloat(leftSide.replace('x', ''))) / 
+                        (leftSide.includes('-x') ? -1 : 1);
+
+                result.textContent = `x = ${x}`;
+                result.style.color = 'var(--text-color)';
+            } catch (error) {
+                result.textContent = 'Invalid equation format. Please use format like: 2x + 3 = 10';
+                result.style.color = 'var(--accent-color)';
+            }
+        }
+
+    </script>
+</body>
+</html> 
